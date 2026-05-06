@@ -154,6 +154,7 @@ export default function Navbar() {
         {/* PATIENT */}
         {token && role === "patient" && (
           <>
+
             <li>
               <a href="/book" className={isActive("/book")}>
                 Dashboard
@@ -170,21 +171,22 @@ export default function Navbar() {
             </li>
 
             <li>
-  <a
-    href="/feedback"
-    className={isActive("/feedback")}
-  >
-    Feedback
-  </a>
-</li>
+              <a
+                href="/feedback"
+                className={isActive("/feedback")}
+              >
+                Feedback
+              </a>
+            </li>
+
             <li>
-  <a
-    href="/documents"
-    className={isActive("/documents")}
-  >
-    Documents
-  </a>
-</li>
+              <a
+                href="/documents"
+                className={isActive("/documents")}
+              >
+                Documents
+              </a>
+            </li>
 
           </>
         )}
@@ -192,28 +194,24 @@ export default function Navbar() {
         {/* STAFF */}
         {token && role === "staff" && (
           <>
+
             <li>
               <a href="/doctor" className={isActive("/doctor")}>
                 Dashboard
               </a>
             </li>
 
-            {/* ✅ NEW SLOT PAGE */}
             <li>
               <a href="/slots" className={isActive("/slots")}>
                 Slots
               </a>
             </li>
 
-
-
             <li>
-  <a href="/history" className={isActive("/history")}>
-    History
-  </a>
-</li>
-
-
+              <a href="/history" className={isActive("/history")}>
+                History
+              </a>
+            </li>
 
             <li>
               <a
@@ -224,44 +222,51 @@ export default function Navbar() {
               </a>
             </li>
 
-<li>
-  <a
-    href="/feedback-admin"
-    className={isActive("/feedback-admin")}
-  >
-    Feedback
-  </a>
-</li>
+            <li>
               <a
-    href="/documents-admin"
-    className={isActive("/documents-admin")}
-  >
-    Documents
-  </a>
-</li>
+                href="/feedback-admin"
+                className={isActive("/feedback-admin")}
+              >
+                Feedback
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="/documents-admin"
+                className={isActive("/documents-admin")}
+              >
+                Documents
+              </a>
+            </li>
+
           </>
         )}
 
         {/* ADMIN */}
         {token && role === "admin" && (
           <>
+
             <li>
               <a href="/admin" className={isActive("/admin")}>
                 Dashboard
               </a>
             </li>
+
           </>
         )}
 
         {/* LOGOUT */}
         {token && (
           <li>
+
             <button
               className="nav-link-btn nav-logout-btn"
               onClick={logout}
             >
               Logout
             </button>
+
           </li>
         )}
 
