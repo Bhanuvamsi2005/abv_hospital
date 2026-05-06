@@ -58,6 +58,8 @@ import SlotOverview from "./pages/SlotOverview";
 import History from "./pages/History";
 import Feedback from "./pages/Feedback";
 import FeedbackAdmin from "./pages/FeedbackAdmin";
+import Documents from "./pages/Documents";
+import DocumentsAdmin from "./pages/DocumentsAdmin";
 function App() {
   return (
     <BrowserRouter>
@@ -87,6 +89,12 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
 
         <Route path="/feedback-admin" element={<FeedbackAdmin />} />
+<Route path="/documents" element={<Documents />} />
+        
+        <Route
+  path="/documents-admin"
+  element={<DocumentsAdmin />}
+/>
       </Routes>
     </BrowserRouter>
   );
