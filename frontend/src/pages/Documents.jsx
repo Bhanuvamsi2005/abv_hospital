@@ -112,7 +112,8 @@ export default function Documents() {
             width: "100%",
             maxWidth: "1400px",
             margin: "0 auto",
-            padding: "30px 20px"
+            padding: "30px 20px",
+            boxSizing: "border-box"
           }}
         >
 
@@ -134,12 +135,12 @@ export default function Documents() {
 
           </div>
 
-          {/* MAIN LAYOUT */}
+          {/* RESPONSIVE LAYOUT */}
           <div
             className="book-layout"
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
               gap: "28px",
               alignItems: "start",
               width: "100%"
@@ -153,16 +154,22 @@ export default function Documents() {
                 width: "100%",
                 minWidth: "0",
                 overflow: "hidden",
-                boxSizing: "border-box"
+                boxSizing: "border-box",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "18px"
               }}
             >
 
               <div
                 className="book-form-title"
                 style={{
-                  marginBottom: "28px",
+                  marginBottom: "10px",
                   fontSize: "1.4rem",
-                  fontWeight: "700"
+                  fontWeight: "700",
+                  lineHeight: "1.4",
+                  wordBreak: "break-word"
                 }}
               >
                 Request Document Set
@@ -185,6 +192,7 @@ export default function Documents() {
                       patient_name: e.target.value
                     })
                   }
+                  style={{ width: "100%" }}
                 />
 
               </div>
@@ -206,12 +214,20 @@ export default function Documents() {
                       patient_phone: e.target.value
                     })
                   }
+                  style={{ width: "100%" }}
                 />
 
               </div>
 
               {/* DATES */}
-              <div className="form-row-2">
+              <div
+                className="form-row-2"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                  gap: "16px"
+                }}
+              >
 
                 <div className="form-group">
 
@@ -229,6 +245,7 @@ export default function Documents() {
                         admit_date: e.target.value
                       })
                     }
+                    style={{ width: "100%" }}
                   />
 
                 </div>
@@ -249,6 +266,7 @@ export default function Documents() {
                         discharge_date: e.target.value
                       })
                     }
+                    style={{ width: "100%" }}
                   />
 
                 </div>
@@ -272,6 +290,7 @@ export default function Documents() {
                       purpose: e.target.value
                     })
                   }
+                  style={{ width: "100%" }}
                 />
 
               </div>
@@ -293,6 +312,11 @@ export default function Documents() {
                       patient_note: e.target.value
                     })
                   }
+                  style={{
+                    width: "100%",
+                    minHeight: "120px",
+                    resize: "vertical"
+                  }}
                 />
 
               </div>
@@ -341,7 +365,7 @@ export default function Documents() {
                 className="book-submit"
                 onClick={submit}
                 style={{
-                  marginTop: "20px",
+                  marginTop: "8px",
                   width: "100%"
                 }}
               >
@@ -361,7 +385,9 @@ export default function Documents() {
 
               <h2
                 style={{
-                  marginBottom: "20px"
+                  marginBottom: "20px",
+                  fontSize: "1.5rem",
+                  wordBreak: "break-word"
                 }}
               >
                 📄 My Document Requests
@@ -390,10 +416,23 @@ export default function Documents() {
                   <div
                     className="appointment-card"
                     key={r._id}
+                    style={{
+                      width: "100%",
+                      overflow: "hidden",
+                      wordBreak: "break-word"
+                    }}
                   >
 
                     {/* TOP */}
-                    <div className="appt-top">
+                    <div
+                      className="appt-top"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        gap: "12px",
+                        flexWrap: "wrap"
+                      }}
+                    >
 
                       <div>
 
@@ -418,7 +457,14 @@ export default function Documents() {
                     </div>
 
                     {/* DETAILS */}
-                    <div className="appt-details">
+                    <div
+                      className="appt-details"
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                        gap: "14px"
+                      }}
+                    >
 
                       <div className="appt-detail-item">
 
