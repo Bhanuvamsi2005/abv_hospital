@@ -122,6 +122,8 @@ from fastapi.openapi.utils import get_openapi
 from app.routes import auth, appointments, admin, announcements , feedback  # ✅ ADDED
 from app.startup import create_default_admin
 
+from app.routes import document_requests
+
 app = FastAPI()
 
 app.add_middleware(
@@ -144,6 +146,13 @@ app.include_router(
     feedback.router,
     prefix="/feedback",
     tags=["Feedback"]
+)
+
+
+app.include_router(
+    document_requests.router,
+    prefix="/documents",
+    tags=["Documents"]
 )
 
 # 🔐 Swagger JWT config
