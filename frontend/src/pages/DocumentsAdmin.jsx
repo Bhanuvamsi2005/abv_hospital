@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import API from "../api";
 import Navbar from "./Navbar";
+import "./Book.css";
+import "./Global.css";
 
 export default function DocumentsAdmin() {
 
   const [data, setData] = useState([]);
   const [notes, setNotes] = useState({});
 
+  // ✅ FETCH ALL REQUESTS
   const fetchData = async () => {
 
     try {
@@ -16,10 +19,12 @@ export default function DocumentsAdmin() {
       setData(res.data);
 
     } catch {
+
       alert("Failed to fetch document requests");
     }
   };
 
+  // ✅ UPDATE STATUS
   const update = async (id, status) => {
 
     try {
@@ -41,6 +46,7 @@ export default function DocumentsAdmin() {
     }
   };
 
+  // ✅ DELETE REQUEST
   const remove = async (id) => {
 
     const confirmDelete = window.confirm(
@@ -70,26 +76,67 @@ export default function DocumentsAdmin() {
     fetchData();
   }, []);
 
+  // ✅ STATUS COLORS
+  const statusClass = (s) =>
+    s === "approved"
+      ? "status-accepted"
+      : s === "ready"
+      ? "status-accepted"
+      : s === "rejected"
+      ? "status-rejected"
+      : "status-pending";
+
   return (
     <>
       <Navbar />
 
       <div className="page-wrapper">
 
-        <div className="doctor-page">
+        <div className="page-blob blob-1" />
+        <div className="page-blob blob-2" />
 
-          <div className="doctor-header fade-in">
+        <div
+          className="doctor-page"
+          style={{
+            width: "100%",
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "30px 20px",
+            boxSizing: "border-box"
+          }}
+        >
+
+          {/* HEADER */}
+          <div
+            className="doctor-header fade-in"
+            style={{
+              marginBottom: "28px"
+            }}
+          >
+
             <div>
-              <h1>Document Requests</h1>
+
+              <h1
+                style={{
+                  wordBreak: "break-word"
+                }}
+              >
+                Document Requests
+              </h1>
+
               <p>
                 Review and manage patient document requests
               </p>
+
             </div>
+
           </div>
 
+          {/* EMPTY STATE */}
           {data.length === 0 && (
 
             <div className="empty-state">
+
               <span className="empty-state-icon">
                 📄
               </span>
@@ -97,25 +144,58 @@ export default function DocumentsAdmin() {
               <p>
                 No document requests yet
               </p>
+
             </div>
 
           )}
 
-          <div className="stagger">
+          {/* REQUEST LIST */}
+          <div
+            className="stagger"
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(340px, 1fr))",
+              gap: "24px"
+            }}
+          >
 
             {data.map((r) => (
 
               <div
                 className="doc-appt-card"
                 key={r._id}
+                style={{
+                  width: "100%",
+                  boxSizing: "border-box",
+                  overflow: "hidden",
+                  wordBreak: "break-word",
+                  padding: "24px",
+                  borderRadius: "20px"
+                }}
               >
 
                 {/* HEADER */}
-                <div className="doc-appt-header">
+                <div
+                  className="doc-appt-header"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: "14px",
+                    flexWrap: "wrap",
+                    alignItems: "flex-start"
+                  }}
+                >
 
                   <div>
 
-                    <div className="doc-patient-name">
+                    <div
+                      className="doc-patient-name"
+                      style={{
+                        fontSize: "1.2rem",
+                        fontWeight: "700"
+                      }}
+                    >
                       {r.patient_name}
                     </div>
 
@@ -132,15 +212,7 @@ export default function DocumentsAdmin() {
                   </div>
 
                   <span
-                    className={`status-badge ${
-                      r.status === "approved"
-                        ? "status-accepted"
-                        : r.status === "ready"
-                        ? "status-accepted"
-                        : r.status === "rejected"
-                        ? "status-rejected"
-                        : "status-pending"
-                    }`}
+                    className={`status-badge ${statusClass(r.status)}`}
                   >
                     {r.status}
                   </span>
@@ -148,18 +220,35 @@ export default function DocumentsAdmin() {
                 </div>
 
                 {/* PURPOSE */}
-                <div className="doc-problem">
+                <div
+                  className="doc-problem"
+                  style={{
+                    marginTop: "18px"
+                  }}
+                >
 
                   <div className="doc-problem-label">
                     📌 Purpose
                   </div>
 
-                  {r.purpose}
+                  <div
+                    style={{
+                      marginTop: "8px",
+                      lineHeight: "1.6"
+                    }}
+                  >
+                    {r.purpose}
+                  </div>
 
                 </div>
 
-                {/* DOCUMENT LIST */}
-                <div className="doc-patient-grid">
+                {/* DOCUMENTS */}
+                <div
+                  className="doc-patient-grid"
+                  style={{
+                    marginTop: "18px"
+                  }}
+                >
 
                   <div className="doc-patient-item">
 
@@ -167,12 +256,25 @@ export default function DocumentsAdmin() {
                       Requested Documents
                     </div>
 
-                    <ul style={{ marginTop: "10px" }}>
+                    <ul
+                      style={{
+                        marginTop: "12px",
+                        paddingLeft: "18px",
+                        lineHeight: "1.7"
+                      }}
+                    >
+
                       {r.documents.map((d, i) => (
-                        <li key={i}>
+                        <li
+                          key={i}
+                          style={{
+                            marginBottom: "6px"
+                          }}
+                        >
                           {d}
                         </li>
                       ))}
+
                     </ul>
 
                   </div>
@@ -182,33 +284,77 @@ export default function DocumentsAdmin() {
                 {/* PATIENT NOTE */}
                 {r.patient_note && (
 
-                  <div className="doc-existing-note">
+                  <div
+                    className="doc-existing-note"
+                    style={{
+                      marginTop: "18px"
+                    }}
+                  >
 
                     <div className="doc-existing-note-label">
                       Patient Note
                     </div>
 
-                    {r.patient_note}
+                    <div
+                      style={{
+                        marginTop: "8px",
+                        lineHeight: "1.6"
+                      }}
+                    >
+                      {r.patient_note}
+                    </div>
 
                   </div>
 
                 )}
 
-                {/* STAFF NOTE */}
-                <textarea
-                  className="form-textarea doc-note-area"
-                  placeholder="Add note for patient..."
-                  value={notes[r._id] || ""}
-                  onChange={(e) =>
-                    setNotes({
-                      ...notes,
-                      [r._id]: e.target.value
-                    })
-                  }
-                />
+                {/* STAFF NOTE INPUT */}
+                <div
+                  style={{
+                    marginTop: "20px"
+                  }}
+                >
 
-                {/* ACTION BUTTONS */}
-                <div className="doc-actions">
+                  <label
+                    className="form-label"
+                    style={{
+                      marginBottom: "10px",
+                      display: "block"
+                    }}
+                  >
+                    Staff Note
+                  </label>
+
+                  <textarea
+                    className="form-textarea doc-note-area"
+                    placeholder="Add note for patient..."
+                    value={notes[r._id] || ""}
+                    onChange={(e) =>
+                      setNotes({
+                        ...notes,
+                        [r._id]: e.target.value
+                      })
+                    }
+                    style={{
+                      width: "100%",
+                      minHeight: "120px",
+                      resize: "vertical"
+                    }}
+                  />
+
+                </div>
+
+                {/* ACTIONS */}
+                <div
+                  className="doc-actions"
+                  style={{
+                    marginTop: "22px",
+                    display: "grid",
+                    gridTemplateColumns:
+                      "repeat(auto-fit, minmax(140px, 1fr))",
+                    gap: "12px"
+                  }}
+                >
 
                   <button
                     type="button"
@@ -255,13 +401,25 @@ export default function DocumentsAdmin() {
                 {/* STAFF NOTE DISPLAY */}
                 {r.staff_note && (
 
-                  <div className="doc-existing-note">
+                  <div
+                    className="doc-existing-note"
+                    style={{
+                      marginTop: "20px"
+                    }}
+                  >
 
                     <div className="doc-existing-note-label">
-                      Staff Note
+                      Existing Staff Note
                     </div>
 
-                    {r.staff_note}
+                    <div
+                      style={{
+                        marginTop: "8px",
+                        lineHeight: "1.6"
+                      }}
+                    >
+                      {r.staff_note}
+                    </div>
 
                   </div>
 
