@@ -177,6 +177,14 @@ export default function Navbar() {
     Feedback
   </a>
 </li>
+            <li>
+  <a
+    href="/documents"
+    className={isActive("/documents")}
+  >
+    Documents
+  </a>
+</li>
 
           </>
         )}
@@ -222,6 +230,13 @@ export default function Navbar() {
     className={isActive("/feedback-admin")}
   >
     Feedback
+  </a>
+</li>
+              <a
+    href="/documents-admin"
+    className={isActive("/documents-admin")}
+  >
+    Documents
   </a>
 </li>
           </>
