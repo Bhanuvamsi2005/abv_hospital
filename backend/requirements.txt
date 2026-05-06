@@ -10,3 +10,6 @@ email-validator
 python-multipart
 pydantic
 dnspython
+
+
+resend
