@@ -1,0 +1,154 @@
+.book-page {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── HEADER ──────────────── */
+.book-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.book-hero-left h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.book-hero-left p { color: var(--white-80); font-size: 0.95rem; }
+.book-hero-badge {
+  background: rgba(13,148,136,0.15);
+  border: 1px solid rgba(13,148,136,0.3);
+  color: var(--teal-light);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ─── LAYOUT ──────────────── */
+.book-layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ─── FORM CARD ───────────── */
+.book-form-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 90px;
+}
+.book-form-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.book-form-title::before {
+  content: "📋";
+  font-size: 1.2rem;
+}
+
+.form-group { margin-bottom: 14px; }
+
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.book-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: all 0.3s;
+  box-shadow: 0 6px 24px rgba(13,148,136,0.35);
+}
+.book-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(13,148,136,0.5); }
+
+/* ─── APPOINTMENTS ────────── */
+.appointments-section h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.appointment-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+  margin-bottom: 14px;
+  transition: all 0.3s;
+  animation: fadeIn 0.4s ease both;
+}
+.appointment-card:hover {
+  border-color: rgba(13,148,136,0.3);
+  background: rgba(13,148,136,0.06);
+  transform: translateX(4px);
+}
+
+.appt-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.appt-doctor { font-weight: 600; font-size: 0.95rem; }
+.appt-meta { font-size: 0.82rem; color: var(--white-80); margin-top: 3px; }
+
+.appt-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--glass-border);
+}
+.appt-detail-item { font-size: 0.85rem; }
+.appt-detail-label { color: var(--white-80); font-size: 0.78rem; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.appt-note {
+  grid-column: 1 / -1;
+  background: rgba(13,148,136,0.08);
+  border: 1px solid rgba(13,148,136,0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--teal-light);
+  margin-top: 4px;
+}
+.appt-note-label { font-weight: 600; margin-bottom: 2px; }
+
+@media (max-width: 900px) {
+  .book-layout { grid-template-columns: 1fr; }
+  .book-form-card { position: relative; top: 0; }
+}
+@media (max-width: 520px) {
+  .appt-details { grid-template-columns: 1fr; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .book-form-card { padding: 22px; }
+}

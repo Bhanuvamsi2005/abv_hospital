@@ -1,0 +1,210 @@
+.doctor-page {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.doctor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.doctor-header h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.doctor-header p { color: var(--white-80); font-size: 0.95rem; }
+
+.doctor-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.doc-stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.doc-stat:hover { background: rgba(13,148,136,0.08); border-color: rgba(13,148,136,0.3); }
+.doc-stat-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--teal-light);
+}
+.doc-stat-label { font-size: 0.82rem; color: var(--white-80); margin-top: 4px; }
+
+/* ─── APPOINTMENT CARD ──── */
+.doc-appt-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+  animation: fadeIn 0.4s ease both;
+}
+.doc-appt-card:hover { border-color: rgba(13,148,136,0.3); background: rgba(13,148,136,0.05); }
+
+.doc-appt-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.doc-patient-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.doc-appt-meta { font-size: 0.82rem; color: var(--white-80); }
+
+.doc-patient-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 18px;
+}
+.doc-patient-item { font-size: 0.85rem; }
+.doc-patient-label {
+  font-size: 0.75rem;
+  color: var(--white-80);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+
+.doc-problem {
+  background: rgba(245,158,11,0.08);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+  color: rgba(255,255,255,0.85);
+}
+.doc-problem-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.06em;
+}
+
+/* ─── ACTIONS ───────────── */
+.doc-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.btn-accept {
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  color: var(--green);
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-accept:hover { background: rgba(16,185,129,0.3); color: #fff; }
+
+.btn-reject {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #fca5a5;
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-reject:hover { background: rgba(239,68,68,0.28); color: #fff; }
+
+.btn-edit {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--white-80);
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-edit:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+.btn-cancel {
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  color: var(--white-80);
+  padding: 9px 16px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-cancel:hover { border-color: rgba(239,68,68,0.4); color: #fca5a5; }
+
+.doc-note-area { width: 100%; margin-bottom: 12px; }
+
+.doc-existing-note {
+  background: rgba(13,148,136,0.08);
+  border: 1px solid rgba(13,148,136,0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  color: var(--teal-light);
+  margin-bottom: 12px;
+}
+.doc-existing-note-label {
+  font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 4px; color: var(--teal);
+}
+
+.manage-ann-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(13,148,136,0.15);
+  border: 1px solid rgba(13,148,136,0.3);
+  color: var(--teal-light);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.manage-ann-btn:hover { background: rgba(13,148,136,0.25); color: var(--white); }
+
+@media (max-width: 700px) {
+  .doctor-stats { grid-template-columns: 1fr 1fr; }
+  .doc-patient-grid { grid-template-columns: 1fr 1fr; }
+  .doc-appt-card { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .doctor-stats { grid-template-columns: 1fr; }
+  .doc-patient-grid { grid-template-columns: 1fr; }
+}
