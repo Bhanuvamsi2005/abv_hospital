@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
     <loc>https://abv-hospital.vercel.app/</loc>
@@ -32,18 +32,8 @@
   </url>
 
   <url>
-    <loc>https://abv-hospital.vercel.app/admin</loc>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
     <loc>https://abv-hospital.vercel.app/announcements</loc>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abv-hospital.vercel.app/staff-announcements</loc>
-    <priority>0.5</priority>
   </url>
 
   <url>
@@ -62,18 +52,8 @@
   </url>
 
   <url>
-    <loc>https://abv-hospital.vercel.app/feedback-admin</loc>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
     <loc>https://abv-hospital.vercel.app/documents</loc>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://abv-hospital.vercel.app/documents-admin</loc>
-    <priority>0.5</priority>
   </url>
 
 </urlset>
