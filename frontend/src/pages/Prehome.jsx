@@ -65,7 +65,7 @@ export default function PreHome() {
       <nav className="ph-nav">
         <div className="ph-logo">
           <span className="logo-icon">⚕</span>
-          <span className="logo-text">MediCore</span>
+          <span className="logo-text">ClinXite</span>
         </div>
         <div className="ph-nav-actions">
           <button className="btn-ghost" onClick={() => navigate("/login")}>
